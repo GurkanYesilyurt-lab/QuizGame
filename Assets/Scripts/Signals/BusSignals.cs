@@ -7,9 +7,9 @@ namespace Signals
         public string message;
         public Action callback;
     }
-    
-    public struct ClearLayer
+
+    public struct OpenTutorialPanelSignal
     {
-        public int layer;
+        
     }
 }

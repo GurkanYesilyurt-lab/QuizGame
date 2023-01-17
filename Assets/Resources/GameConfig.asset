@@ -16,4 +16,4 @@ MonoBehaviour:
     duration: 2
     showSpeed: 0.75
     hideSpeed: 0.75
-    posY: 229
+    posY: 0

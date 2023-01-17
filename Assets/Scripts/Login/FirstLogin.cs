@@ -1,13 +1,20 @@
+using System;
+using Models.GameModel;
 using Signals;
 using UnityEngine;
 using Zenject;
 
 namespace Login
 {
-    public class Login : MonoBehaviour
+    public class FirstLogin : MonoBehaviour
     {
         [Inject] private SignalBus _signalBus;
+        [Inject] private IGameModel _gameModel;
 
+        private void Awake()
+        {
+            
+        }
 
         public void Fire()
         {
