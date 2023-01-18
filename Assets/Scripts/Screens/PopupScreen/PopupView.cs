@@ -1,14 +1,13 @@
 using System;
 using System.Collections;
-using System.Threading.Tasks;
 using DG.Tweening;
 using Installers;
 using TMPro;
 using UnityEngine;
 
-namespace Popup
+namespace Screens.PopupScreen
 {
-    public class Popup : MonoBehaviour
+    public class PopupView : MonoBehaviour
     {
         [SerializeField] private RectTransform popupParent;
         [SerializeField] private TMP_Text mText;

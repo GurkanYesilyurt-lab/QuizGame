@@ -1,11 +1,9 @@
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using Services;
 using UniRx;
-using UnityEngine;
 
-namespace Controllers
+namespace Screens.Leaderboard
 {
     public class LeaderboardController
     {
@@ -25,7 +23,6 @@ namespace Controllers
             {
                 var data = result.webRequest.downloadHandler.text;
                 var leaderboardData = JsonConvert.DeserializeObject<LeaderboardData>(data);
-                Debug.Log(data.Length);
                 callback?.Invoke(leaderboardData);
             });
         }

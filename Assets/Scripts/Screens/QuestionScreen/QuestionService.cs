@@ -2,7 +2,7 @@ using System;
 using UniRx;
 using UnityEngine.Networking;
 
-namespace Services
+namespace Screens.QuestionScreen
 {
     public class QuestionService
     {

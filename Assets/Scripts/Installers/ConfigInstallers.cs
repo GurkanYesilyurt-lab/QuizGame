@@ -6,7 +6,6 @@ namespace Installers
 {
     
     [CreateAssetMenu(menuName = "Config/Game Settings")]
-
     public class ConfigInstallers : ScriptableObjectInstaller<ConfigInstallers>
     {
         public PopupSettings popupSettings;

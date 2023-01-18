@@ -1,14 +1,13 @@
 using System.Collections.Generic;
-using Controllers;
 using DG.Tweening;
 using Signals;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Views
+namespace Screens.Leaderboard
 {
-    public class LeaderBoardView : MonoBehaviour
+    public class LeaderboardScreenView : MonoBehaviour
     {
         [Inject] private SignalBus _signalBus;
         [Inject] private LeaderboardController _leaderboardController;
@@ -16,6 +15,7 @@ namespace Views
         [SerializeField] private GameObject leaderboardPanel;
         [SerializeField] private InfiniteScroll scroll;
         [SerializeField] private Image progressImage;
+        [SerializeField] private Button closeBtn;
 
         private List<LeaderboardSingleData> _leaderboardList;
         private int _initializedDataCount = 0;
@@ -24,13 +24,21 @@ namespace Views
         private void Awake()
         {
             _leaderboardList = new List<LeaderboardSingleData>();
-            _signalBus.Subscribe<ShowPopupSignal>(OnShowLeaderboardPanelAction);
+            _signalBus.Subscribe<ShowLeaderboardScreenSignal>(ShowLeaderboardPanel);
+            closeBtn.onClick.AddListener(ClosePanel);
             scroll.OnFill += OnFillItem;
             scroll.OnHeight += OnHeightItem;
             scroll.OnPull += OnPull;
         }
 
-        private void OnShowLeaderboardPanelAction()
+        private void ClosePanel()
+        {
+            leaderboardPanel.gameObject.SetActive(false);
+            _signalBus.Fire<ShowMainScreenSignal>();
+        }
+
+
+        private void ShowLeaderboardPanel()
         {
             _lastLoadedPage = 0;
             leaderboardPanel.gameObject.SetActive(true);
@@ -74,12 +82,11 @@ namespace Views
         {
             _lastLoadedPage++;
             LoadData(false);
-            Debug.Log("pull");
         }
 
         void OnFillItem(int index, GameObject item)
         {
-            var singleItem = item.GetComponent<LeaderboardSingleItemView>();
+            var singleItem = item.GetComponent<LeaderboardSingleItem>();
             var singleData = _leaderboardList[index];
             singleItem.Init(singleData.rank.ToString(), singleData.nickname, singleData.score.ToString());
         }

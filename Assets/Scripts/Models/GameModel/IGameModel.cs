@@ -1,5 +1,6 @@
 using System.Collections.Generic;
-using Controllers;
+using Screens.PopupScreen;
+using Screens.QuestionScreen;
 using UnityEngine;
 
 namespace Models.GameModel
@@ -7,7 +8,7 @@ namespace Models.GameModel
     public interface IGameModel
     {
         string PlayerName { get; set; }
-        Popup.Popup Popup();
+        PopupView Popup();
         List<Question> CurrentLevelQuestions { get; set; }
         
         int LevelScore { get; set; }

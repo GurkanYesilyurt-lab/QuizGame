@@ -1,9 +1,9 @@
 using TMPro;
 using UnityEngine;
 
-namespace Views
+namespace Screens.Leaderboard
 {
-    public class LeaderboardSingleItemView : MonoBehaviour
+    public class LeaderboardSingleItem : MonoBehaviour
     {
         [SerializeField] private TMP_Text rank;
         [SerializeField] private TMP_Text userName;

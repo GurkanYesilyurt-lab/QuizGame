@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rank: {fileID: 5384850176705770961}
-  name: {fileID: 5910671823980419832}
+  userName: {fileID: 5910671823980419832}
   score: {fileID: 7661078645929790982}
 --- !u!1 &3779320997157811382
 GameObject:

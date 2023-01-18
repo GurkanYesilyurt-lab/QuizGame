@@ -1,4 +1,4 @@
-namespace Enums
+namespace Screens.QuestionScreen
 {
     public enum ChoiceType
     {

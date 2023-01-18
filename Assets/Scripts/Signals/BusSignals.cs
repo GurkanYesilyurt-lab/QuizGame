@@ -8,18 +8,20 @@ namespace Signals
         public Action callback;
     }
 
-    public struct OpenTutorialPanelSignal
+    public struct ShowMainScreenSignal
     {
-        
     }
+
     
+    public struct ShowLeaderboardScreenSignal
+    {
+    }
+
     public struct LoadQuestionDataSignal
     {
-        
     }
     
     public struct ShowQuestionScreenSignal
     {
-        
     }
 }

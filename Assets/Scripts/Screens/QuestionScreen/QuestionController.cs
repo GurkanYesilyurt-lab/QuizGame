@@ -1,14 +1,12 @@
 using System;
 using System.Collections.Generic;
-using Enums;
 using Installers;
 using Models.GameModel;
 using Newtonsoft.Json;
-using Services;
 using UniRx;
 using Zenject;
 
-namespace Controllers
+namespace Screens.QuestionScreen
 {
     public class QuestionController
     {

@@ -1,22 +1,22 @@
-using System;
-using Controllers;
 using DG.Tweening;
+using Screens.QuestionScreen;
 using Signals;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace LoadingScreen
+namespace Screens.LoadingScreen
 {
-    public class LoadingScreen : MonoBehaviour
+    public class LoadingScreenView : MonoBehaviour
     {
         [Inject] private SignalBus _signalBus;
         [Inject] private QuestionController _questionController;
-        
+
         [SerializeField] private Image loadingCircle;
         [SerializeField] private GameObject loadingScreen;
 
         private bool _isQuestionsLoaded;
+
         private void Awake()
         {
             _signalBus.Subscribe<LoadQuestionDataSignal>(ShowLoadingScreen);
@@ -35,7 +35,10 @@ namespace LoadingScreen
                     }
                     else
                     {
-                        //Show Error Popup
+                        _signalBus.Fire(new ShowPopupSignal()
+                        {
+                            message = "Check your connection"
+                        });
                     }
                 });
         }
@@ -45,11 +48,8 @@ namespace LoadingScreen
             StarLoadingTimer(3);
             _isQuestionsLoaded = false;
             loadingScreen.SetActive(true);
-            
-            _questionController.LoadAllQuestions(() =>
-            {
-                _isQuestionsLoaded = true;
-            });
+
+            _questionController.LoadAllQuestions(() => { _isQuestionsLoaded = true; });
         }
     }
 }

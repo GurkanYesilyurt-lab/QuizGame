@@ -1,15 +1,13 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Controllers;
 using DG.Tweening;
-using Enums;
 using Signals;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Views
+namespace Screens.QuestionScreen
 {
     public class QuestionScreenView : MonoBehaviour
     {

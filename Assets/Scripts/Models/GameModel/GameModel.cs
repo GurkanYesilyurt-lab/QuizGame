@@ -1,24 +1,25 @@
 using System.Collections.Generic;
-using Controllers;
+using Screens.PopupScreen;
+using Screens.QuestionScreen;
 
 namespace Models.GameModel
 {
     public class GameModel : IGameModel
     {
         public string PlayerName { get; set; }
-        private readonly Popup.Popup _popup;
+        private readonly PopupView _popupView;
         public List<Question> CurrentLevelQuestions { get; set; }
         public int LevelScore { get; set; }
 
-        public GameModel(Popup.Popup popup)
+        public GameModel(PopupView popupView)
         {
-            _popup = popup;
+            _popupView = popupView;
             CurrentLevelQuestions = new List<Question>();
         }
         
-        public Popup.Popup Popup()
+        public PopupView Popup()
         {
-            return _popup;
+            return _popupView;
         }
     }
 }

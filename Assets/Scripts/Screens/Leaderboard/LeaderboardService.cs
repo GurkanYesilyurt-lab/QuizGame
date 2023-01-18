@@ -2,7 +2,7 @@ using System;
 using UniRx;
 using UnityEngine.Networking;
 
-namespace Services
+namespace Screens.Leaderboard
 {
     public class LeaderboardService
     {
@@ -13,12 +13,7 @@ namespace Services
             var requestDisposable = UnityWebRequest
                 .Get(_url)
                 .SendWebRequest()
-                .AsAsyncOperationObservable(); 
-            // .Subscribe(result =>
-            // {
-            //     var data = result.webRequest.downloadHandler.text;
-            //     var myDeserializedClass = JsonConvert.DeserializeObject<QuestionData>(data);
-            // });
+                .AsAsyncOperationObservable();
             return requestDisposable;
         }
     }

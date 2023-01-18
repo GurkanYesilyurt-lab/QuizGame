@@ -3,9 +3,9 @@ using Models.GameModel;
 using Signals;
 using Zenject;
 
-namespace Popup
+namespace Screens.PopupScreen
 {
-    public class PopupMediator
+    public class PopupController
     {
         [Inject] private IGameModel _gameModel;
         [Inject] private PopupSettings popupSettings;
