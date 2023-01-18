@@ -71,8 +71,10 @@ namespace Screens.QuestionScreen
 
         public void GoToMainMenu()
         {
+            _signalBus.Fire<ShowMainScreenSignal>();
             questionScreen.SetActive(false);
             levelEndPanel.SetActive(false);
+            SetChoiceButtonsBeginPosition();
         }
 
         private void ShowFirstQuestion()
