@@ -21,12 +21,15 @@ namespace Installers
             Container.Bind<IGameModel>().To<GameModel>().AsSingle().WithArguments(popup).NonLazy();
             
             Container.Bind<PopupMediator>().AsSingle().NonLazy();
-            Container.Bind<RandomUserNameService>().AsSingle().NonLazy();
+           // Container.Bind<RandomUserNameService>().AsSingle().NonLazy();
             Container.Bind<LeaderboardController>().AsSingle().NonLazy();
+            Container.Bind<QuestionController>().AsSingle().NonLazy();
             
             
             Container.DeclareSignal<ShowPopupSignal>();
             Container.DeclareSignal<OpenTutorialPanelSignal>();
+            Container.DeclareSignal<LoadQuestionDataSignal>();
+            Container.DeclareSignal<ShowQuestionScreenSignal>();
             
             Container.BindSignal<ShowPopupSignal>()
                 .ToMethod<PopupMediator>(x => x.ShowPopup).FromResolve();

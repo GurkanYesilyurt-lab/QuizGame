@@ -4,7 +4,6 @@ using Newtonsoft.Json;
 using Services;
 using UniRx;
 using UnityEngine;
-using UnityEngine.Networking;
 
 namespace Mopsicus.InfiniteScroll.Controllers
 {
@@ -25,9 +24,9 @@ namespace Mopsicus.InfiniteScroll.Controllers
             observable.Subscribe(result =>
             {
                 var data = result.webRequest.downloadHandler.text;
-                var myDeserializedClass = JsonConvert.DeserializeObject<LeaderboardData>(data);
+                var leaderboardData = JsonConvert.DeserializeObject<LeaderboardData>(data);
                 Debug.Log(data.Length);
-                callback?.Invoke(myDeserializedClass);
+                callback?.Invoke(leaderboardData);
             });
         }
     }

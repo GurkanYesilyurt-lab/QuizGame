@@ -18,10 +18,11 @@ namespace Login
 
         public void Fire()
         {
-            _signalBus.Fire(new ShowPopupSignal() { message = "Basma buraya",callback = () =>
-            {
-                Debug.Log("Geri Gittim");
-            }});
+            // _signalBus.Fire(new ShowPopupSignal() { message = "Basma buraya",callback = () =>
+            // {
+            //     Debug.Log("Geri Gittim");
+            // }});
+            _signalBus.Fire(new LoadQuestionDataSignal() { });
         }
     }
 }

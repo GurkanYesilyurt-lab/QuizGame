@@ -12,4 +12,14 @@ namespace Signals
     {
         
     }
+    
+    public struct LoadQuestionDataSignal
+    {
+        
+    }
+    
+    public struct ShowQuestionScreenSignal
+    {
+        
+    }
 }
