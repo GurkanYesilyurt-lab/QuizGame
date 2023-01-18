@@ -58,24 +58,19 @@ namespace Screens.Leaderboard
             _leaderboardController.LoadLeaderboardData(_lastLoadedPage, (data) =>
             {
                 progressTween?.Kill(true);
-                _leaderboardList.AddRange(data.data);
-                _lastLoadedPage = data.page;
+                _leaderboardList.AddRange(data.Data);
+                _lastLoadedPage = data.Page;
                 if (isFirstInit)
                 {
-                    _initializedDataCount = data.data.Count;
+                    _initializedDataCount = data.Data.Count;
                     scroll.InitData(_initializedDataCount);
                 }
                 else
                 {
-                    _initializedDataCount += data.data.Count;
-                    scroll.ApplyDataTo(_initializedDataCount, data.data.Count, InfiniteScroll.Direction.Bottom);
+                    _initializedDataCount += data.Data.Count;
+                    scroll.ApplyDataTo(_initializedDataCount, data.Data.Count, InfiniteScroll.Direction.Bottom);
                 }
             });
-        }
-
-        public void CloseLeaderboardPanel()
-        {
-            leaderboardPanel.gameObject.SetActive(false);
         }
 
         private void OnPull(InfiniteScroll.Direction obj)
@@ -88,7 +83,7 @@ namespace Screens.Leaderboard
         {
             var singleItem = item.GetComponent<LeaderboardSingleItem>();
             var singleData = _leaderboardList[index];
-            singleItem.Init(singleData.rank.ToString(), singleData.nickname, singleData.score.ToString());
+            singleItem.Init(singleData.Rank.ToString(), singleData.Nickname, singleData.Score.ToString());
         }
 
         int OnHeightItem(int index)

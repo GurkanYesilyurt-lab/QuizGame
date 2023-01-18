@@ -10,11 +10,11 @@ namespace Screens.Leaderboard
         [SerializeField] private TMP_Text score;
 
 
-        public void Init(string rank, string name, string score)
+        public void Init(string rankValue, string nameValue, string scoreValue)
         {
-            this.rank.text = rank;
-            userName.text = name;
-            this.score.text = score;
+            rank.text = rankValue;
+            userName.text = nameValue;
+            score.text = scoreValue;
         }
     }
 }

@@ -87,7 +87,7 @@ namespace Screens.QuestionScreen
         {
             var question = _questionController.GetQuestion(_questionIndex);
             InitTimer();
-            InitPanel(question.question, question.choices);
+            InitPanel(question.Question, question.Choices);
             SetChoiceButtonInteractableStatus(true);
             SetChoiceButtonsToDefaultColor();
             SetChoiceButtonsBeginPosition();

@@ -24,14 +24,14 @@ namespace Screens.QuestionScreen
             _questionService = new QuestionService();
         }
 
-        public Question GetQuestion(int index)
+        public SingleQuestion GetQuestion(int index)
         {
             return _gameModel.CurrentLevelQuestions[index];
         }
 
         public bool GetAnswer(int index, ChoiceType choice)
         {
-            return _gameModel.CurrentLevelQuestions[index].answer == choice.ToString();
+            return _gameModel.CurrentLevelQuestions[index].Answer == choice.ToString();
         }
 
         public void SetScore(int score)
@@ -50,22 +50,9 @@ namespace Screens.QuestionScreen
             _questionService.GetQuestions().Subscribe(result =>
             {
                 var questionData = JsonConvert.DeserializeObject<QuestionData>(result.webRequest.downloadHandler.text);
-                _gameModel.CurrentLevelQuestions = questionData.questions;
+                _gameModel.CurrentLevelQuestions = questionData.Questions;
                 callback?.Invoke();
             });
         }
-    }
-
-    public class Question
-    {
-        public string category { get; set; }
-        public string question { get; set; }
-        public List<string> choices { get; set; }
-        public string answer { get; set; }
-    }
-
-    public class QuestionData
-    {
-        public List<Question> questions { get; set; }
     }
 }

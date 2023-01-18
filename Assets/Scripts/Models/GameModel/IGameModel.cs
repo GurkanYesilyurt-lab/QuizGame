@@ -9,7 +9,7 @@ namespace Models.GameModel
     {
         string PlayerName { get; set; }
         PopupView Popup();
-        List<Question> CurrentLevelQuestions { get; set; }
+        List<SingleQuestion> CurrentLevelQuestions { get; set; }
         
         int LevelScore { get; set; }
     }

@@ -17,14 +17,17 @@ namespace Screens.LoadingScreen
 
         private bool _isQuestionsLoaded;
 
+        private Tween _loadingTween;
+
         private void Awake()
         {
             _signalBus.Subscribe<LoadQuestionDataSignal>(ShowLoadingScreen);
         }
 
-        public void StarLoadingTimer(float time)
+        private void StartLoadingTimer(float time)
         {
-            DOVirtual.Float(0, 1, time, (delta) => { loadingCircle.fillAmount = delta; })
+            _loadingTween?.Kill();
+            _loadingTween = DOVirtual.Float(0, 1, time, (delta) => { loadingCircle.fillAmount = delta; })
                 .SetEase(Ease.Linear)
                 .OnComplete(() =>
                 {
@@ -43,12 +46,11 @@ namespace Screens.LoadingScreen
                 });
         }
 
-        public void ShowLoadingScreen()
+        private void ShowLoadingScreen()
         {
-            StarLoadingTimer(3);
+            StartLoadingTimer(3);
             _isQuestionsLoaded = false;
             loadingScreen.SetActive(true);
-
             _questionController.LoadAllQuestions(() => { _isQuestionsLoaded = true; });
         }
     }

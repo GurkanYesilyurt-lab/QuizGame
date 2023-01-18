@@ -27,18 +27,5 @@ namespace Screens.Leaderboard
             });
         }
     }
-
-
-    public class LeaderboardSingleData
-    {
-        public int rank { get; set; }
-        public string nickname { get; set; }
-        public int score { get; set; }
-    }
-
-    public class LeaderboardData
-    {
-        public int page { get; set; }
-        public List<LeaderboardSingleData> data { get; set; }
-    }
+    
 }
