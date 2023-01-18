@@ -5,7 +5,7 @@ using Services;
 using UniRx;
 using UnityEngine;
 
-namespace Mopsicus.InfiniteScroll.Controllers
+namespace Controllers
 {
     public class LeaderboardController
     {

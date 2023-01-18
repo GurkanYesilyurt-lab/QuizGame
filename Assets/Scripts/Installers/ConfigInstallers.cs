@@ -10,17 +10,14 @@ namespace Installers
     public class ConfigInstallers : ScriptableObjectInstaller<ConfigInstallers>
     {
         public PopupSettings popupSettings;
-
-        
+        public QuestionSettings questionSettings;
         
         public override void InstallBindings()
         {
             Container.BindInstance(popupSettings);
+            Container.BindInstance(questionSettings);
         }
     }
-    
-    
-    
     
     
     [Serializable]
@@ -30,6 +27,15 @@ namespace Installers
         public float showSpeed;
         public float hideSpeed;
         [Range(0,1000)] public float posY;
+    }
+
+    [Serializable]
+    public class QuestionSettings
+    {
+        public float duration;
+        public int rightAnswerScore;
+        public int wrongAnswerScore;
+        public int outOfTimeScore;
     }
     
     

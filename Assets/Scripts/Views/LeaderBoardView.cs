@@ -1,7 +1,6 @@
 using System.Collections.Generic;
+using Controllers;
 using DG.Tweening;
-using Mopsicus.InfiniteScroll;
-using Mopsicus.InfiniteScroll.Controllers;
 using Signals;
 using UnityEngine;
 using UnityEngine.UI;

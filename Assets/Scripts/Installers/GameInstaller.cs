@@ -1,6 +1,6 @@
 using System.Collections.Generic;
+using Controllers;
 using Models.GameModel;
-using Mopsicus.InfiniteScroll.Controllers;
 using Popup;
 using Services;
 using Signals;
@@ -21,11 +21,9 @@ namespace Installers
             Container.Bind<IGameModel>().To<GameModel>().AsSingle().WithArguments(popup).NonLazy();
             
             Container.Bind<PopupMediator>().AsSingle().NonLazy();
-           // Container.Bind<RandomUserNameService>().AsSingle().NonLazy();
             Container.Bind<LeaderboardController>().AsSingle().NonLazy();
             Container.Bind<QuestionController>().AsSingle().NonLazy();
-            
-            
+
             Container.DeclareSignal<ShowPopupSignal>();
             Container.DeclareSignal<OpenTutorialPanelSignal>();
             Container.DeclareSignal<LoadQuestionDataSignal>();

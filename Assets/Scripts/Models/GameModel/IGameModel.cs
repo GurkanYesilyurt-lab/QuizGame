@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Mopsicus.InfiniteScroll.Controllers;
+using Controllers;
 using UnityEngine;
 
 namespace Models.GameModel
@@ -9,5 +9,7 @@ namespace Models.GameModel
         string PlayerName { get; set; }
         Popup.Popup Popup();
         List<Question> CurrentLevelQuestions { get; set; }
+        
+        int LevelScore { get; set; }
     }
 }

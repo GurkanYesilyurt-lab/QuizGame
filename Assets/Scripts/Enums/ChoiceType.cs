@@ -5,6 +5,7 @@ namespace Enums
         A,
         B,
         C,
-        D
+        D,
+        X //For the out of time auto answer
     }
 }

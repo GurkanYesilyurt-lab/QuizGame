@@ -17,3 +17,8 @@ MonoBehaviour:
     showSpeed: 0.75
     hideSpeed: 0.75
     posY: 0
+  questionSettings:
+    duration: 20
+    rightAnswerScore: 10
+    wrongAnswerScore: -5
+    outOfTimeScore: -3

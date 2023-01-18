@@ -1,6 +1,6 @@
 using System;
+using Controllers;
 using DG.Tweening;
-using Mopsicus.InfiniteScroll.Controllers;
 using Signals;
 using UnityEngine;
 using UnityEngine.UI;
