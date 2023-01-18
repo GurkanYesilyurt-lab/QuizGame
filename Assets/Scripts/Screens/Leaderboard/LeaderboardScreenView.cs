@@ -26,9 +26,9 @@ namespace Screens.Leaderboard
             _leaderboardList = new List<LeaderboardSingleData>();
             _signalBus.Subscribe<ShowLeaderboardScreenSignal>(ShowLeaderboardPanel);
             closeBtn.onClick.AddListener(ClosePanel);
-            scroll.OnFill += OnFillItem;
+            scroll.onFill += OnFillItem;
             scroll.OnHeight += OnHeightItem;
-            scroll.OnPull += OnPull;
+            scroll.onPull += OnPull;
         }
 
         private void ClosePanel()
