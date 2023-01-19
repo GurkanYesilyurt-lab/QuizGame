@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using Installers;
 using Models.GameModel;
 using Newtonsoft.Json;
@@ -44,11 +43,6 @@ namespace Screens.QuestionScreen
         public void SetScore(int score)
         {
             _gameModel.LevelScore = score;
-        }
-
-        public void OutOfTimeSetScore()
-        {
-            _gameModel.LevelScore += _questionSettings.outOfTimeScore;
         }
 
         public void LoadAllQuestions(Action callback)

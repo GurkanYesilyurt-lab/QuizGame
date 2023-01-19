@@ -14,6 +14,7 @@ namespace Screens.QuestionScreen
         [Inject] private SignalBus _signalBus;
         [Inject] private QuestionController _questionController;
 
+        #region UI Items
         [SerializeField] private GameObject questionScreen;
         [SerializeField] private GameObject levelEndPanel;
         [SerializeField] private List<RectTransform> choiceButtonRectList;
@@ -27,6 +28,8 @@ namespace Screens.QuestionScreen
         [SerializeField] private Color rightColor;
         [SerializeField] private Color wrongColor;
         [SerializeField] private Image timeBarImg;
+        #endregion
+
 
         private List<Button> _choiceButtonList;
         private List<TMP_Text> _choiceTxtList;
@@ -109,7 +112,6 @@ namespace Screens.QuestionScreen
                 .SetEase(Ease.Linear)
                 .OnComplete(() =>
                 {
-                    //SetChoiceButtonInteractableStatus(false);
                     ChoiceSelected(ChoiceType.X);
                 });
         }
@@ -200,24 +202,26 @@ namespace Screens.QuestionScreen
             SetChoiceButtonInteractableStatus(false);
             _timerTween.Kill();
             await Task.Delay(1000);
-            var answer = _questionController.GetAnswer(_questionIndex);
-            Debug.Log(answer);
-            SetButtonColor(answer, true);
-            var isTrue = _questionController.CheckAnswerIsTrue(_questionIndex, choice);
-            SetButtonColor(choice, isTrue);
-            SetScore(choice, isTrue);
+            CheckAnswer(choice);
             _questionIndex++;
             MoveButtonsOutOfScreen();
             await Task.Delay(2000);
             if (_questionIndex >= 10)
             {
-                //LevelEnd
                 levelEndPanel.SetActive(true);
                 questionScreen.SetActive(false);
                 return;
             }
-
             ShowQuestion();
+        }
+
+        private void CheckAnswer(ChoiceType choice)
+        {
+            var answer = _questionController.GetAnswer(_questionIndex);
+            SetButtonColor(answer, true);
+            var isTrue = _questionController.CheckAnswerIsTrue(_questionIndex, choice);
+            SetButtonColor(choice, isTrue);
+            SetScore(choice, isTrue);
         }
     }
 }
