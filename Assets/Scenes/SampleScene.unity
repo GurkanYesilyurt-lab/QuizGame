@@ -373,7 +373,7 @@ GameObject:
   - component: {fileID: 154873287}
   - component: {fileID: 154873291}
   m_Layer: 5
-  m_Name: StaticCanvas
+  m_Name: BeginCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

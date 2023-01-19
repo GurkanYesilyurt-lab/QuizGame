@@ -107,7 +107,11 @@ namespace Screens.QuestionScreen
                         timerTxt.text = $"00:{(int) (duration - value)}";
                     })
                 .SetEase(Ease.Linear)
-                .OnComplete(() => { SetChoiceButtonInteractableStatus(false); });
+                .OnComplete(() =>
+                {
+                    //SetChoiceButtonInteractableStatus(false);
+                    ChoiceSelected(ChoiceType.X);
+                });
         }
 
         private void SetChoiceButtonsBeginPosition()
@@ -160,11 +164,15 @@ namespace Screens.QuestionScreen
             }
         }
 
-        private async void SetScore(bool isTrue)
+        private async void SetScore(ChoiceType choice, bool isTrue)
         {
             var incrementScore = isTrue
                 ? _questionController.QuestionSettings.rightAnswerScore
                 : _questionController.QuestionSettings.wrongAnswerScore;
+            if (choice == ChoiceType.X)
+            {
+                incrementScore = _questionController.QuestionSettings.outOfTimeScore;
+            }
 
             addScoreTxt.rectTransform.anchoredPosition = _addScoreTextDefaultPos;
             addScoreTxt.text = isTrue ? "+" + incrementScore : incrementScore.ToString();
@@ -180,9 +188,10 @@ namespace Screens.QuestionScreen
             _questionController.SetScore(finalScore);
         }
 
-        private void SetButtonColor(int index,bool isTrue)
+        private void SetButtonColor(ChoiceType choice, bool isTrue)
         {
-            _choiceImageList[index].color = isTrue ? rightColor : wrongColor;
+            if (choice == ChoiceType.X) return;
+            _choiceImageList[(int) choice].color = isTrue ? rightColor : wrongColor;
         }
 
 
@@ -191,18 +200,23 @@ namespace Screens.QuestionScreen
             SetChoiceButtonInteractableStatus(false);
             _timerTween.Kill();
             await Task.Delay(1000);
-            var isTrue = _questionController.GetAnswer(_questionIndex, choice);
-            SetScore(isTrue);
-            SetButtonColor((int)choice,isTrue);
+            var answer = _questionController.GetAnswer(_questionIndex);
+            Debug.Log(answer);
+            SetButtonColor(answer, true);
+            var isTrue = _questionController.CheckAnswerIsTrue(_questionIndex, choice);
+            SetButtonColor(choice, isTrue);
+            SetScore(choice, isTrue);
             _questionIndex++;
             MoveButtonsOutOfScreen();
             await Task.Delay(2000);
-            if (_questionIndex>=10)
+            if (_questionIndex >= 10)
             {
+                //LevelEnd
                 levelEndPanel.SetActive(true);
                 questionScreen.SetActive(false);
                 return;
             }
+
             ShowQuestion();
         }
     }

@@ -10,7 +10,6 @@ namespace Models.GameModel
         string PlayerName { get; set; }
         PopupView Popup();
         List<SingleQuestion> CurrentLevelQuestions { get; set; }
-        
         int LevelScore { get; set; }
     }
 }

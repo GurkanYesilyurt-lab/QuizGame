@@ -29,9 +29,16 @@ namespace Screens.QuestionScreen
             return _gameModel.CurrentLevelQuestions[index];
         }
 
-        public bool GetAnswer(int index, ChoiceType choice)
+        public bool CheckAnswerIsTrue(int index, ChoiceType choice)
         {
             return _gameModel.CurrentLevelQuestions[index].Answer == choice.ToString();
+        }
+
+        public ChoiceType GetAnswer(int questionIndex)
+        {
+            var answer = _gameModel.CurrentLevelQuestions[questionIndex].Answer;
+            var choice= Enum.Parse<ChoiceType>(answer);
+            return choice;
         }
 
         public void SetScore(int score)
